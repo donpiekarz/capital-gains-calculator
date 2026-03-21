@@ -63,6 +63,12 @@ def create_parser() -> argparse.ArgumentParser:
         help="folder containing the exported transaction files from Trading 212",
     )
     parser.add_argument(
+        "--interactivebrokers",
+        type=str,
+        nargs="?",
+        help="folder containing the exported transaction files from Interactive Brokers",
+    )
+    parser.add_argument(
         "--mssb",
         type=str,
         nargs="?",

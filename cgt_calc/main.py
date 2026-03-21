@@ -646,12 +646,14 @@ class CapitalGainsCalculator:
             allowable_cost = current_amount * disposal_quantity / current_quantity
             chargeable_gain += proceeds_amount - allowable_cost
             LOGGER.debug(
-                "SECTION 104, quantity %d, gain %s, proceeds amount %s, "
-                "allowable cost %s",
+                "%s SECTION 104, quantity %d, gain %s, proceeds amount %s, "
+                "allowable cost %s, current quantity %d",
+                symbol,
                 disposal_quantity,
                 proceeds_amount - allowable_cost,
                 proceeds_amount,
                 allowable_cost,
+                current_quantity,
             )
             current_quantity -= disposal_quantity
             current_amount -= allowable_cost
@@ -835,6 +837,7 @@ def main() -> int:
         args.mssb,
         args.sharesight,
         args.raw,
+        args.interactivebrokers,
     )
     converter = CurrencyConverter(args.exchange_rates_file)
     initial_prices = InitialPrices(read_initial_prices(args.initial_prices))

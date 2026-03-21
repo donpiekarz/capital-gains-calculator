@@ -133,9 +133,13 @@ class CurrencyConverter:
         """Convert amount from given currency to GBP."""
         if currency == "GBP":
             return amount
+        print(f'{date} Converting {amount} of {currency} to GBP rate: {self.currency_to_gbp_rate(currency.upper(), date)}')
         return amount / self.currency_to_gbp_rate(currency.upper(), date)
 
     def to_gbp_for(self, amount: Decimal, transaction: BrokerTransaction) -> Decimal:
         """Convert amount from transaction currency to GBP."""
+
+        #if hasattr(transaction, 'fxrate'):
+        #    return amount * transaction.fxrate
 
         return self.to_gbp(amount, transaction.currency, transaction.date)
